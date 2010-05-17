@@ -3,35 +3,39 @@
 <!-- App Delegate Inc <http://appdelegateinc.com> 2010 -->
 
 <head>
-	<title>GMaps Circle Test</title>
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOzwQ7Lh4CqiMto5Mx5BruhS-xyZmcPPoBCehH0LrfEv4pktlHxSKTILYLRlghp_oPDcwTo3STVXADg" type="text/javascript"></script>
-	<script src="js/gmaps.CircleOverlay.js" type="text/javascript"></script>
+	<title>GMaps Circle Overlay Test</title>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAOzwQ7Lh4CqiMto5Mx5BruhRu8Zoefu_OQdkD9qaip96YWZcBUhS4yqdwG25yZdJJy87O76_wWCQTJQ" type="text/javascript"></script>
+	<script src="maps.google.circleoverlay.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	var circle = null;
-	var circleRadius = 50; // Miles
 	var map = null;
 	var isCompatible = GBrowserIsCompatible();
 	
-	//<![CDATA[
 	function load() {
 		if (isCompatible) {
 			// Create Map
 			map = new GMap2(document.getElementById("map"));
-			map.setCenter(new GLatLng(42, -74), 6);
+			map.setCenter(new GLatLng(42, -74), 8);
 			
 			// Add controls
 			map.addControl(new GLargeMapControl());
 			map.addControl(new GMapTypeControl());
 			
-			// Create and add the circle
-			circle = new CircleOverlay(map.getCenter(), circleRadius, "#336699", 1, 1, '#336699', 0.25);
-			map.addOverlay(circle);
+			// Create and add a smooth circle
+			var circle1 = new CircleOverlay(map.getCenter(), 100, "#000000", 1, 1, '#009900', 0.25, 50);
+			map.addOverlay(circle1);
+			
+			// Create and add the circle with default resolution (40)
+			var circle2 = new CircleOverlay(map.getCenter(), 50, "#0000FF", 1, 1, '#0000FF', 0.25);
+			map.addOverlay(circle2);
+			
+			// Create and add a coarse circle
+			var circle3 = new CircleOverlay(map.getCenter(), 25, "#FF0000", 1, 1, '#FF0000', 0.25, 10);
+			map.addOverlay(circle3);
 		}
 	}
-	//]]>
 	</script>
 </head>
 <body onload="load()" onunload="GUnload()">
-	<div id="map" style="width: 400px; height: 300px; border: 1px solid #666666;"></div>
+	<div id="map" style="width: 700px; height: 500px; border: 1px solid #666666;"></div>
 </body>
 </html>
