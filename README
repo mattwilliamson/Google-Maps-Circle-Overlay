@@ -1,0 +1,17 @@
+This is a Javascript Google Maps extension that adds a circle overlay that can be added to a GMap2 object. It is a subclass of GPolygon that draws the vertices in a circle. It has an adjustable resolution for the number of vertices drawn by using the last parameter of the constructor. The more points provided in the numPoints parameter, the smoother the circle will look, but the lower the performance. Included is a sample HTML page that makes use of it to demonstrate usage.
+
+
+API:
+
+CircleOverlay(center:Number, radius:Number, strokeColor:String, strokeWeight:Number, strokeOpacity:Number, fillColor:Number, fillOpacity:Number, numPoints?:Number)
+
+
+Sample Usage:
+
+var circle = new CircleOverlay(map.getCenter(), circleRadius, "#336699", 1, 1, '#336699', 0.25);
+map.addOverlay(circle);
+
+or specify the number of points in the polygon for smoother or coarser effect:
+
+var circle = new CircleOverlay(map.getCenter(), circleRadius, "#0000FF", 1, 1, '#0000FF', 0.25, 40);
+map.addOverlay(circle);
