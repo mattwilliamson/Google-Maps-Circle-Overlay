@@ -7,6 +7,7 @@
 // Constructor
 var CircleOverlay = function(map, latLng, radius, strokeColor, strokeWidth, strokeOpacity, fillColor, fillOpacity, numPoints) {
 	this.map = map;
+	this.setMap(map);
 	this.latLng = latLng;
 	this.radius = radius;
 	this.strokeColor = strokeColor;
